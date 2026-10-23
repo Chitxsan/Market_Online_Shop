@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#fff5fa" />
+    <meta name="description" content="A little pocket of birthday magic, made just for you." />
+    <title>A Little Birthday Magic</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="birthday-config.js" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <canvas class="celebration-canvas" id="celebrationCanvas" aria-hidden="true"></canvas>
+    <div class="dreamy-sky" aria-hidden="true">
+      <span class="cloud cloud-one"></span><span class="cloud cloud-two"></span>
+      <span class="twinkle twinkle-one">✦</span><span class="twinkle twinkle-two">✧</span>
+      <span class="twinkle twinkle-three">✦</span><span class="twinkle twinkle-four">✧</span>
+      <span class="sky-heart sky-heart-one">♡</span><span class="sky-heart sky-heart-two">♡</span>
+      <span class="butterfly butterfly-one">🦋</span><span class="butterfly butterfly-two">🦋</span>
+    </div>
+
+    <main class="page-shell" id="pageShell">
+      <header class="topbar">
+        <a class="wordmark" href="#top" aria-label="A Little Birthday Magic home">
+          <span class="wordmark-flower" aria-hidden="true">✿</span> a little birthday magic
+        </a>
+        <button class="music-toggle" id="musicToggle" type="button" aria-pressed="false" aria-label="Turn birthday music on">
+          <span class="music-icon" aria-hidden="true">♫</span><span id="musicLabel">Music off</span>
+        </button>
+      </header>
+
+      <section class="experience-card" id="experience">
+        <div class="opening-panel" id="openingPanel">
+          <p class="eyebrow"><span class="eyebrow-line"></span> made with a little extra love <span class="eyebrow-line"></span></p>
+          <h1>A little surprise<br /><span>just for you</span></h1>
+          <p class="intro-copy">A tiny bit of birthday magic is tucked inside this box.</p>
+
+          <button class="gift-button" id="giftButton" type="button" aria-label="Open your birthday gift">
+            <span class="gift-glow" aria-hidden="true"></span>
+            <span class="gift-spark gift-spark-one" aria-hidden="true">✦</span>
+            <span class="gift-spark gift-spark-two" aria-hidden="true">✧</span>
+            <span class="gift-spark gift-spark-three" aria-hidden="true">♡</span>
+            <span class="gift-burst" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></span>
+            <span class="gift-illustration" aria-hidden="true">
+              <span class="gift-lid"><span class="lid-ribbon"></span><span class="bow bow-left"></span><span class="bow bow-right"></span><span class="bow-knot"></span></span>
+              <span class="gift-box"><span class="box-ribbon"></span><span class="box-shine"></span></span>
+            </span>
+          </button>
+
+          <h2 class="surprise-prompt">A Special Surprise Is Waiting for You! <span aria-hidden="true">🎁</span></h2>
+          <p class="instruction">Click the gift box to open your surprise!</p>
+          <button class="primary-button open-cta" id="openCta" type="button">Open Your Birthday Surprise 🎁</button>
+          <p class="tiny-note"><span aria-hidden="true">♡</span> best opened with a smile</p>
+        </div>
+
+        <section class="reveal-panel" id="birthdayReveal" hidden aria-labelledby="birthdayHeading">
+          <div class="reveal-heading">
+            <p class="eyebrow"><span class="eyebrow-line"></span> today is all about you <span class="eyebrow-line"></span></p>
+            <h2 id="birthdayHeading" class="birthday-heading"><span id="typedHeading"></span><span class="typing-cursor" aria-hidden="true"></span></h2>
+            <p class="reveal-subtitle">A whole new year of lovely things begins today.</p>
+          </div>
+
+          <div class="birthday-layout">
+            <div class="portrait-stage">
+              <span class="portrait-halo" aria-hidden="true"></span>
+              <span class="portrait-ray ray-one" aria-hidden="true"></span><span class="portrait-ray ray-two" aria-hidden="true"></span>
+              <span class="portrait-star portrait-star-one" aria-hidden="true">✦</span><span class="portrait-star portrait-star-two" aria-hidden="true">✧</span>
+              <span class="portrait-star portrait-star-three" aria-hidden="true">✧</span>
+              <div class="portrait-frame" id="portraitFrame">
+                <!-- Replace this little illustrated portrait with your own photo; see README.md. -->
+                <svg class="portrait-art" id="portraitArt" viewBox="0 0 240 270" role="img" aria-label="A sweet illustrated birthday girl with dark hair and a pink dress">
+                  <defs>
+                    <linearGradient id="portraitBg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff3fa"/><stop offset="1" stop-color="#e9e4ff"/></linearGradient>
+                    <linearGradient id="dress" x1="0" y1="0" x2="0.9" y2="1"><stop stop-color="#f8a9c5"/><stop offset="1" stop-color="#e880a8"/></linearGradient>
+                  </defs>
+                  <rect width="240" height="270" rx="120" fill="url(#portraitBg)"/>
+                  <circle cx="120" cy="111" r="68" fill="#593c53"/>
+                  <path d="M34 270c5-49 37-78 86-78s81 29 86 78" fill="url(#dress)"/>
+                  <path d="M96 183h48v32c-13 13-35 13-48 0z" fill="#f4bd9b"/>
+                  <ellipse cx="120" cy="112" rx="49" ry="59" fill="#ffd3b8"/>
+                  <path d="M70 110c-5-37 10-74 50-77 40-3 56 31 50 67-10-7-18-21-21-34-18 21-47 30-79 26z" fill="#593c53"/>
+                  <path d="M76 99c-8 20-7 53 3 69-22-7-31-31-27-52 2-16 10-29 24-37zM164 97c8 20 7 53-3 71 23-8 30-31 27-54-2-15-10-28-24-37z" fill="#593c53"/>
+                  <path d="M99 119q7-7 14 0" fill="none" stroke="#704b5c" stroke-width="3" stroke-linecap="round"/><path d="M128 119q7-7 14 0" fill="none" stroke="#704b5c" stroke-width="3" stroke-linecap="round"/>
+                  <circle cx="101" cy="132" r="6" fill="#f6a4aa" opacity=".55"/><circle cx="139" cy="132" r="6" fill="#f6a4aa" opacity=".55"/>
+                  <path d="M111 145q9 9 18 0" fill="none" stroke="#d96e87" stroke-width="2.6" stroke-linecap="round"/>
+                  <path d="m157 74 4-10 4 10 10 4-10 4-4 10-4-10-10-4z" fill="#f8d77c"/>
+                  <circle cx="76" cy="169" r="7" fill="#f6c968"/><circle cx="164" cy="169" r="7" fill="#f6c968"/>
+                  <path d="M91 216q29 19 58 0" fill="none" stroke="#fff4f8" stroke-width="4" opacity=".8"/>
+                  <path d="m108 229 12 14 12-14" fill="none" stroke="#fff4f8" stroke-width="3" opacity=".85"/>
+                </svg>
+              </div>
+              <span class="portrait-caption">the birthday girl <span aria-hidden="true">♡</span></span>
+            </div>
+
+            <div class="birthday-letter">
+              <div class="letter-topline"><span>✿</span><span>a note for you</span><span>✿</span></div>
+              <p class="typed-message" id="typedMessage" aria-label="Birthday message"></p>
+              <div class="letter-signoff">with all my love <span aria-hidden="true">♡</span></div>
+              <button class="text-button" id="loveButton" type="button" aria-expanded="false" aria-controls="loveNote">A Little More Love <span aria-hidden="true">💌</span></button>
+              <p class="love-note" id="loveNote" hidden></p>
+            </div>
+          </div>
+
+          <div class="interaction-row">
+            <div class="secret-message">
+              <span class="secret-label">tap a little star to find a secret</span>
+              <div class="secret-constellation" aria-label="Hidden birthday messages">
+                <button class="secret-orb" type="button" data-message="You make ordinary days feel like little celebrations. ♡" aria-label="Reveal a hidden birthday message">♡</button>
+                <button class="secret-orb star-orb" type="button" data-message="Somewhere in the world, someone is smiling because you exist. ✨" aria-label="Reveal a hidden birthday message">✦</button>
+                <button class="secret-orb" type="button" data-message="I hope this next trip around the sun is your loveliest one yet. 🌙" aria-label="Reveal a hidden birthday message">♡</button>
+              </div>
+              <p class="secret-result" id="secretResult" aria-live="polite"></p>
+            </div>
+
+            <div class="cake-area">
+              <span class="cake-instruction">make a wish, then tap each candle</span>
+              <div class="cake" role="group" aria-label="Birthday cake candles">
+                <div class="candles">
+                  <button class="candle" type="button" aria-label="Blow out candle one"><span class="flame"></span><span class="wick"></span></button>
+                  <button class="candle" type="button" aria-label="Blow out candle two"><span class="flame"></span><span class="wick"></span></button>
+                  <button class="candle" type="button" aria-label="Blow out candle three"><span class="flame"></span><span class="wick"></span></button>
+                </div>
+                <div class="cake-top"></div><div class="cake-body"><span class="cake-frosting"></span><span class="cake-sprinkles">·　✦　·　♡　·</span></div><div class="cake-plate"></div>
+              </div>
+              <p class="wish-message" id="wishMessage" aria-live="polite">Every candle holds a wish just for you.</p>
+            </div>
+          </div>
+
+          <div class="reveal-actions">
+            <button class="primary-button celebrate-button" id="celebrateButton" type="button">Celebrate With Me! 🎉</button>
+            <button class="secondary-button" id="finaleButton" type="button">One last little wish <span aria-hidden="true">→</span></button>
+          </div>
+
+          <div class="balloons" aria-hidden="true"><span class="balloon balloon-pink"></span><span class="balloon balloon-lilac"></span><span class="balloon balloon-blue"></span></div>
+        </section>
+
+        <section class="finale-panel" id="finalePanel" hidden aria-labelledby="finaleHeading">
+          <span class="finale-heart" aria-hidden="true">♡</span>
+          <p class="eyebrow"><span class="eyebrow-line"></span> one last thing <span class="eyebrow-line"></span></p>
+          <h2 id="finaleHeading">May your birthday be<br /><span>as beautiful as your heart!</span> <span aria-hidden="true">💗</span></h2>
+          <p class="finale-copy">May this year bring you soft mornings, happy surprises, and more reasons to smile than you can count.</p>
+          <button class="primary-button finale-celebrate" id="finaleCelebrate" type="button">Make another wish <span aria-hidden="true">✨</span></button>
+          <button class="text-button return-button" id="returnButton" type="button">Back to your birthday <span aria-hidden="true">↑</span></button>
+          <div class="finale-doodles" aria-hidden="true"><span>✦</span><span>♡</span><span>✧</span><span>♡</span><span>✦</span></div>
+        </section>
+      </section>
+
+      <footer class="page-footer"><span>made just for you</span><span aria-hidden="true">✧</span><span>with love, always</span></footer>
+    </main>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>
